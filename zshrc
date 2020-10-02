@@ -39,3 +39,8 @@ prompt fire 57 57 57 39 39 39
 if [ -f /etc/bash.command-not-found ]; then
 	. /etc/bash.command-not-found
 fi
+
+autoload -Uz bashcompinit
+bashcompinit
+
+source ~/juju-autocomplete
