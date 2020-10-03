@@ -2,9 +2,9 @@ export LS_COLORS="di=1;31"
 export EDITOR=/usr/bin/vim
 alias 'ls'='ls --color'
 alias 'll'='ls -lta'
-alias 'ovpn-start'='sudo openvpn /etc/openvpn/client.conf&'
+alias 'ovpn-start'='sudo systemctl start openvpn-client@client'
 #alias 'ovpn-stop'="for pid in $(ps aux|grep openvpn|grep client.conf|awk {'print $2'}) do sudo kill -9 $pid;done;"
-alias "ovpn-stop"="sudo killall openvpn"
+alias "ovpn-stop"="sudo systemctl stop openvpn-client@client"
 alias "sshuttle-traffic"="sshuttle -r ubuntu@bastion 10.5.0.0/16&"
 alias "start-servers"="zsh /home/gabe/bin/start-servers.sh"
 alias "sosser"="source /home/gabe/bin/sosser"
@@ -23,7 +23,7 @@ zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
+zle -N up-line-or-beginning-searcha
 zle -N down-line-or-beginning-search
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
